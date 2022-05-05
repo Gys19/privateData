@@ -1,0 +1,45 @@
+<!-- https://raw.githubusercontent.com/Gys19/privateData/main/FourCities.geojson -->
+
+<head>
+	<!-- Plotly.js -->
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+	<div id="myDiv" style="width: 100%; height: 100%;"><!-- Plotly chart will be drawn inside this DIV --></div>
+	<a href="csv.html">About this site</a>
+
+	<script type="text/javascript">
+		var myPlot = document.getElementById('myDiv');
+
+		var data = [{
+			type: "choroplethmapbox",
+			locations: ['KNOXVILLE','NASHVILLE','MEMPHIS','CHATTANOOGA'], z:[200,200,200,200],
+			geojson: "https://raw.githubusercontent.com/Gys19/privateData/main/FourCities.geojson",
+			showscale:false,
+		}];
+
+		var layout = {mapbox: 
+			{center: {lon: -86.97050333533291, lat: 35.88873428582721,}, zoom: 6,},
+			width: 900, height:500};
+
+			var config = {mapboxAccessToken: "pk.eyJ1IjoiaHR0cHAiLCJhIjoiY2s5NHpqcHg3MGlzbDNkcHVnNHF1dThvaiJ9.cnXMluRodjxQlgqhu5_XCQ",
+										displaylogo:false};
+			Plotly.newPlot('myDiv', data, layout, config);
+			myPlot.on('plotly_click', function(d){
+				console.log(d.points[0].location)
+				window.alert('you are clicking '+ d.points[0].location +' now...')
+			});
+
+		</script>
+
+		<script type="text/javascript">
+			
+			let str = 'JS';
+			let newStr = str.replace('S','J');
+			console.log(newStr)
+
+
+		</script>
+
+	</body>
